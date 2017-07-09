@@ -16,7 +16,7 @@ var _getRandomRoute = function (str) {
     return {
         randNumber: str,
     };
-} 
+}
 
 var ROUTE_STACK = [
     _getRandomRoute('Main'),
@@ -34,7 +34,7 @@ export default class film extends Component {
         }
     }
 
-    render() {        
+    render() {
         return (
             <Navigator
                 initialRoute={ROUTE_STACK[routeIndex]}
@@ -45,24 +45,26 @@ export default class film extends Component {
                 navigationBar={
                     this.TabBar()
                 }
-                 initialRouteStack={ROUTE_STACK}
-                 ref={(navigator) => {
+                initialRouteStack={ROUTE_STACK}
+                ref={(navigator) => {
                   this._navigator = navigator;
                 }}
-                />
+            />
         );
     }
-    renderScene(route, navigator){       
-        var pages =[
+
+    renderScene(route, navigator) {
+        var pages = [
             <Main {...route.params} />,
             <CinemaNav {...route.params}  />,
             <User {...route.params}  />,
         ]
-       return (
-           pages[routeIndex]
-       )
-       
+        return (
+            pages[routeIndex]
+        )
+
     }
+
     TabBar() {
         return (
             <View style={styles.tabs }>
@@ -84,7 +86,7 @@ export default class film extends Component {
                          this.setState({tabIndex:1})
                     } }>
                     ></TabBarItem>
-                 <TabBarItem
+                <TabBarItem
                     underlayColor="#B5B5B5"
                     image={require("./images/me.png") }
                     title="我"
@@ -96,14 +98,15 @@ export default class film extends Component {
             </View>
         )
     }
-    onTabIndex(_index){        
+
+    onTabIndex(_index) {
         routeIndex = _index;
         // this._navigator.jumpTo(ROUTE_STACK[routeIndex]);
     }
 }
 
 const styles = StyleSheet.create({
-    tabs:{
-        flexDirection:"row"
+    tabs: {
+        flexDirection: "row"
     }
 });
